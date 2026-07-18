@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Каталог запчастин | MINI Cooper R50</title>
+    <meta name="description" content="Дерево каталогу запчастин MINI Cooper R50 01/2003 з картинками схем і OEM-кодами, які вже вдалося витягнути.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="На головну">
+        <span class="brand-mark">R50</span>
+        <span>
+          <strong>MINI Cooper</strong>
+          <small>WMWRC31050TB86552</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Меню</span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html">Головна</a>
+        <a href="repairs.html">Ремонти</a>
+        <a href="maintenance.html">ТО</a>
+        <a class="active" href="parts.html">Запчастини</a>
+        <a href="info.html">Інше</a>
+      </nav>
+    </header>
+
+    <main class="page-shell parts-page">
+      <section class="page-title">
+        <p class="section-kicker">Каталог</p>
+        <h1>Запчастини MINI Cooper R50</h1>
+        <p>
+          Дерево Elcats збережене для наданого посилання, а OEM-коди й таблиці деталей
+          підтягуються з RealOEM для точної моделі RC31-EUR-01-2003-R50-Mini-Cooper.
+        </p>
+      </section>
+
+      <section class="catalog-alert">
+        <strong>Важливо перед купівлею</strong>
+        <p>
+          Elcats за посиланням відкрив MINI R50 січень 2003, але в шапці позначає модель
+          як One 1.6i. Твій автомобіль підтверджений як MINI Cooper R50 W10 AT. Тому коди
+          потрібно фінально перевіряти за VIN у постачальника або на СТО.
+        </p>
+      </section>
+
+      <section class="catalog-toolbar" aria-label="Пошук у каталозі">
+        <label>
+          <span>Пошук</span>
+          <input id="parts-search" type="search" placeholder="Назва, група або OEM-код">
+        </label>
+        <div class="catalog-stats" id="parts-stats">Завантажую каталог…</div>
+      </section>
+
+      <section class="catalog-layout">
+        <aside class="catalog-sidebar">
+          <div class="section-heading compact">
+            <p class="section-kicker">Elcats</p>
+            <h2>Дерево розділів</h2>
+          </div>
+          <div id="elcats-tree" class="catalog-tree" aria-live="polite"></div>
+        </aside>
+
+        <section class="catalog-results">
+          <div class="section-heading compact">
+            <p class="section-kicker">RealOEM</p>
+            <h2>Схеми й OEM-коди</h2>
+          </div>
+          <div id="parts-results" class="diagram-list" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>MINI Cooper R50 DB</span>
+      <a href="https://t.me/myminicooperr50">Telegram-канал</a>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

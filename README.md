@@ -7,12 +7,15 @@
 - `index.html` — загальна інформація та посилання на Telegram-канал.
 - `repairs.html` — загальна історія ремонтів.
 - `maintenance.html` — історія проходження ТО.
+- `parts.html` — дерево каталогу запчастин з Elcats і схемами/OEM-кодами з RealOEM.
 - `info.html` — інша інформація, корисні посилання та правила ведення бази.
 
 ## Джерела
 
 - Фото заказ-нарядів і листів вхідного контролю Bosch Service / Форсаж.
 - Оголошення купівлі Auto.RIA: `https://auto.ria.com/uk/auto_mini_hatch_35206543.html`.
+- Elcats: дерево розділів для MINI R50, січень 2003.
+- RealOEM: схеми та OEM-коди для `RC31-EUR-01-2003-R50-Mini-Cooper`.
 - Telegram-канал `https://t.me/myminicooperr50`.
 
 ## Локальний перегляд
