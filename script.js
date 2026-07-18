@@ -73,10 +73,10 @@ const renderElcatsTree = (items, query) => {
           ${children
             .map((item) => `
               <li>
-                <a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">
+                <button class="catalog-tree-item" type="button" data-query="${escapeHtml(item.titleUk)}">
                   <strong>${escapeHtml(item.titleUk)}</strong>
                   <span>${escapeHtml(item.id)}</span>
-                </a>
+                </button>
               </li>
             `)
             .join("")}
@@ -103,10 +103,11 @@ const renderDiagrams = (diagrams, query, coverageText) => {
       const badge = parts.length > 0
         ? `<span class="status done">${parts.length} OEM-рядків</span>`
         : `<span class="status warning">Очікує дозбору</span>`;
+      const localImage = diagram.imageLarge || diagram.image;
       return `
         <article class="diagram-card">
           <div class="diagram-media">
-            ${diagram.imageLarge ? `<img src="${escapeHtml(diagram.imageLarge)}" alt="${escapeHtml(diagram.titleUk)}">` : ""}
+            ${localImage ? `<img src="${escapeHtml(localImage)}" alt="${escapeHtml(diagram.titleUk)}">` : `<span>${escapeHtml(diagram.imageStatusUk || "Схему ще не перенесено локально")}</span>`}
           </div>
           <div class="diagram-body">
             <div class="diagram-heading">
@@ -114,7 +115,6 @@ const renderDiagrams = (diagrams, query, coverageText) => {
               ${badge}
             </div>
             <h3>${escapeHtml(diagram.titleUk)}</h3>
-            <a class="source-link" href="${escapeHtml(diagram.url)}" target="_blank" rel="noreferrer">Відкрити джерело</a>
             ${parts.length > 0 ? `
               <div class="part-table-wrap">
                 <table class="part-table">
@@ -165,7 +165,7 @@ const initPartsCatalog = async () => {
     const catalog = await response.json();
     const coverage = catalog.metadata.coverage;
     const coverageText =
-      `Elcats: ${coverage.elcatsSections} розділів · RealOEM: ${coverage.realOemFetchedDiagrams}/${coverage.realOemDiagrams} схем із таблицями · ${coverage.realOemPartsRows} OEM-рядків`;
+      `Локальна база: ${coverage.elcatsSections} розділів · ${coverage.realOemFetchedDiagrams}/${coverage.realOemDiagrams} схем із таблицями · ${coverage.realOemPartsRows} OEM-рядків`;
     partsStats.textContent = coverageText;
 
     const render = () => {
@@ -175,6 +175,15 @@ const initPartsCatalog = async () => {
     };
 
     partsSearch?.addEventListener("input", render);
+    elcatsTree.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-query]");
+      if (!button || !partsSearch) {
+        return;
+      }
+      partsSearch.value = button.dataset.query || "";
+      render();
+      partsResults?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
     render();
   } catch (error) {
     partsStats.textContent = "Не вдалося завантажити каталог запчастин";
